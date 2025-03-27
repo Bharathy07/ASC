@@ -1,0 +1,653 @@
+/* Theme Variables */
+:root[data-theme="light"] {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-light: #a5b4fc;
+    --secondary-color: #10b981;
+    --accent-color: #f97316;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-light: #f9fafb;
+    --bg-main: #f1f5f9;
+    --bg-card: #ffffff;
+    --bg-hover: #f3f4f6;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --error-color: #ef4444;
+    --success-color: #10b981;
+    --gradient-start: #6366f1;
+    --gradient-end: #10b981;
+    --nav-gradient-start: #4f46e5;
+    --nav-gradient-end: #4338ca;
+    --file-icon-color: #6366f1;
+    --success-bg: #ecfdf5;
+    --error-bg: #fef2f2;
+    --button-hover: rgba(0, 0, 0, 0.1);
+    --heading-color: #374151;  /* gray-700 */
+    --heading-shadow: rgba(55, 65, 81, 0.1);
+}
+
+:root[data-theme="dark"] {
+    --primary-color: #818cf8;
+    --primary-dark: #6366f1;
+    --primary-light: #c7d2fe;
+    --secondary-color: #34d399;
+    --accent-color: #fb923c;
+    --text-primary: #f9fafb;
+    --text-secondary: #e5e7eb;
+    --text-light: #f3f4f6;
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --bg-hover: #334155;
+    --border-color: #475569;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --error-color: #f87171;
+    --success-color: #34d399;
+    --gradient-start: #818cf8;
+    --gradient-end: #34d399;
+    --nav-gradient-start: #3730a3;
+    --nav-gradient-end: #312e81;
+    --file-icon-color: #818cf8;
+    --success-bg: #064e3b;
+    --error-bg: #7f1d1d;
+    --button-hover: rgba(255, 255, 255, 0.1);
+    --heading-color: #f3f4f6;  /* gray-100 */
+    --heading-shadow: rgba(243, 244, 246, 0.1);
+}
+
+/* Default to light theme */
+:root {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-light: #a5b4fc;
+    --secondary-color: #10b981;
+    --accent-color: #f97316;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-light: #f9fafb;
+    --bg-main: #f1f5f9;
+    --bg-card: #ffffff;
+    --bg-hover: #f3f4f6;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --error-color: #ef4444;
+    --success-color: #10b981;
+    --heading-color: #374151;
+    --heading-shadow: rgba(55, 65, 81, 0.1);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navigation Menu */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #1e293b !important;  /* formal dark blue */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#filesMenuButton {
+    position: relative;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    color: #f8fafc;  /* bright white */
+}
+
+#filesMenuButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#filesDropdown {
+    transform-origin: top right;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    transform: scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+    background-color: var(--bg-card);
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
+}
+
+#filesDropdown.show {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-file-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.15s ease;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    color: var(--text-primary);
+    background-color: var(--bg-card);
+}
+
+.menu-file-item:hover {
+    background-color: var(--bg-hover);
+    border-left-color: var(--primary-color);
+}
+
+.menu-file-item .file-icon {
+    color: var(--file-icon-color);
+    margin-right: 0.75rem;
+    font-size: 1rem;
+}
+
+/* Modern Card Styles */
+.card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Modern Button Styles */
+button {
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Primary Button Style */
+.upload-btn,
+#checkAllBtn,
+#checkAllFilesBtn {
+    background: #1e40af !important; /* Dark blue */
+    color: white !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.upload-btn:hover,
+#checkAllBtn:hover,
+#checkAllFilesBtn:hover {
+    background: #1e3a8a !important; /* Slightly darker blue */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 0.5rem 1rem !important;
+    color: #f8fafc !important;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Files Menu Button */
+#filesMenuButton {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 0.5rem 1rem !important;
+    color: #f8fafc !important;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+}
+
+#filesMenuButton:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Button focus states */
+button:focus {
+    outline: none;
+    ring: 2px;
+    ring-offset: 2px;
+    ring-color: rgba(30, 64, 175, 0.5);
+}
+
+/* Drop Zone */
+.drag-drop-zone {
+    border: 1px dashed #d1d5db;
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background-color: #f9fafb;
+    position: relative;
+}
+
+.drag-drop-zone:hover {
+    border-color: #6366f1;
+    background-color: #f9fafb;
+}
+
+.drag-drop-zone.dragover {
+    background-color: #f9fafb;
+    border-color: #6366f1;
+}
+
+.loading-spinner {
+    display: none;
+    width: 40px;
+    height: 40px;
+    margin: 20px auto;
+    border: 3px solid var(--gray-200);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.76, 0.05, 0.86, 0.06) infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: var(--gray-200);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+    transition: width 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+.file-preview {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-card);
+    border-radius: 0.5rem;
+    margin: 0.75rem 0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.file-preview:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.file-preview .file-icon {
+    margin-right: 0.75rem;
+    color: var(--file-icon-color);
+    font-size: 1.2rem;
+}
+
+.similarity-result {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.similarity-score {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 220px;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    position: absolute;
+    z-index: 10;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--bg-dark) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-hover);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-light);
+}
+
+/* File Actions */
+.delete-file-btn, .delete-menu-file-btn {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+}
+
+.delete-file-btn:hover, .delete-menu-file-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.file-preview:hover .delete-file-btn {
+    opacity: 1;
+}
+
+.menu-file-item .delete-menu-file-btn {
+    opacity: 0.5;
+}
+
+.menu-file-item:hover .delete-menu-file-btn {
+    opacity: 0.9;
+}
+
+/* File Checkboxes */
+.file-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.375rem;
+    background-color: var(--bg-card);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.file-checkbox:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.file-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.file-checkbox:hover {
+    border-color: var(--primary-color);
+}
+
+.file-checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* Update existing styles to use new variables */
+.bg-gradient-to-r {
+    background: #1e40af !important;
+}
+
+.file-preview .file-icon,
+.menu-file-item .file-icon,
+.fas.fa-file-pdf {
+    color: var(--file-icon-color);
+}
+
+/* Success message styles */
+.bg-green-50 {
+    background-color: var(--success-bg);
+}
+
+/* Error message styles */
+.bg-red-50 {
+    background-color: var(--error-bg);
+}
+
+/* Update text colors for better visibility in dark mode */
+[data-theme="dark"] .text-gray-500 {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .text-gray-600 {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .text-gray-700 {
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .text-gray-800 {
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .text-gray-900 {
+    color: #f8fafc;
+}
+
+/* Update background colors for better contrast in dark mode */
+[data-theme="dark"] .bg-gray-50 {
+    background-color: #1e293b;
+}
+
+[data-theme="dark"] .bg-gray-100 {
+    background-color: #334155;
+}
+
+[data-theme="dark"] .bg-gray-200 {
+    background-color: #475569;
+}
+
+/* Update border colors in dark mode */
+[data-theme="dark"] .border-gray-200 {
+    border-color: #475569;
+}
+
+/* Update hover states in dark mode */
+[data-theme="dark"] .hover\:bg-indigo-50:hover {
+    background-color: rgba(129, 140, 248, 0.2);
+}
+
+[data-theme="dark"] .hover\:bg-red-100:hover {
+    background-color: rgba(248, 113, 113, 0.2);
+}
+
+/* Update progress bars in dark mode */
+[data-theme="dark"] .progress-bar {
+    background-color: #475569;
+}
+
+[data-theme="dark"] .progress-bar-fill {
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.5);
+}
+
+/* Update file checkboxes in dark mode */
+[data-theme="dark"] .file-checkbox {
+    border-color: #475569;
+}
+
+[data-theme="dark"] .file-checkbox:hover {
+    border-color: #818cf8;
+}
+
+[data-theme="dark"] .file-checkbox:checked {
+    background-color: #818cf8;
+    border-color: #818cf8;
+}
+
+/* Update drag-drop zone in dark mode */
+[data-theme="dark"] .drag-drop-zone {
+    border-color: #475569;
+    background-color: rgba(129, 140, 248, 0.05);
+}
+
+[data-theme="dark"] .drag-drop-zone:hover {
+    border-color: #818cf8;
+    background-color: rgba(129, 140, 248, 0.1);
+}
+
+[data-theme="dark"] .drag-drop-zone.dragover {
+    background-color: rgba(129, 140, 248, 0.15);
+}
+
+/* Update comparison results in dark mode */
+[data-theme="dark"] .similarity-score {
+    background: linear-gradient(90deg, #818cf8, #34d399);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(129, 140, 248, 0.3);
+}
+
+/* Consistent Heading Styles */
+.app-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--heading-color);
+    text-shadow: 0 4px 12px var(--heading-shadow);
+    letter-spacing: -0.025em;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.app-heading-icon {
+    color: var(--heading-color);
+    text-shadow: 0 4px 12px var(--heading-shadow);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Remove the gradient styles since we're using solid colors now */
+[data-theme="dark"] .app-heading,
+[data-theme="dark"] .app-heading-icon {
+    color: var(--heading-color);
+    text-shadow: 0 4px 12px var(--heading-shadow);
+}
+
+/* Add styles for nav elements */
+.nav-app-name {
+    color: #f8fafc;
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: -0.025em;
+}
+
+.nav-icon {
+    color: #f8fafc;
+    opacity: 0.9;
+}
+
+/* Upload button specific styles */
+.upload-btn {
+    background: #1e40af !important; /* Formal dark blue */
+    color: white !important;
+    transition: all 0.3s ease !important;
+    padding: 10px 24px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.upload-btn:hover {
+    background: #1e3a8a !important; /* Slightly darker blue for hover */
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Section Headers */
+.section-title {
+    color: #111827;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* File Icons */
+.fa-file-pdf {
+    color: #6366f1;
+}
+
+/* Update heading styles */
+h2.text-2xl {
+    color: #111827;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Update text colors */
+.text-gray-600 {
+    color: #4b5563;
+}
+
+.text-gray-400 {
+    color: #9ca3af;
+} 
